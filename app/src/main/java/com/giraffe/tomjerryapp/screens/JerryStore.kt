@@ -1,6 +1,7 @@
 package com.giraffe.tomjerryapp.screens
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -35,8 +36,10 @@ import com.giraffe.tomjerryapp.ui.theme.darkGray
 import com.giraffe.tomjerryapp.ui.theme.lightGray
 
 @Composable
-fun JerryStoreScreen() {
-    Box {
+fun JerryStoreScreen(modifier: Modifier= Modifier) {
+    Box(
+        modifier = modifier.background(Color.White)
+    ) {
         Column(modifier = Modifier.padding(horizontal = 16.dp)) {
             Row(
                 modifier = Modifier

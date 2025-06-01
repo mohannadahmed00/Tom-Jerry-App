@@ -23,7 +23,6 @@ import com.giraffe.tomjerryapp.R
 import com.giraffe.tomjerryapp.ui.theme.TomJerryAppTheme
 import com.giraffe.tomjerryapp.ui.theme.blue
 
-// style = MaterialTheme.typography.displaySmall
 @Composable
 fun ButtonWithIcon(
     modifier: Modifier = Modifier,
@@ -80,7 +79,7 @@ fun ButtonWithIcon(
 
 @Preview
 @Composable
-fun ButtonWithIconPreview(modifier: Modifier = Modifier) {
+fun ButtonWithIconPreview() {
     TomJerryAppTheme {
         ButtonWithIcon()
     }

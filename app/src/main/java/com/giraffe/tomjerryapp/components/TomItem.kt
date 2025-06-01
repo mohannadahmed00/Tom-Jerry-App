@@ -8,7 +8,6 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -39,8 +38,7 @@ fun TomItem(modifier: Modifier = Modifier) {
             Image(
                 modifier = Modifier
                     .width(98.4.dp)
-                    .height(100.dp)
-                    .offset(y = (-16).dp),
+                    .height(100.dp),
                 painter = painterResource(R.drawable.tom),
                 contentDescription = "tom"
             )
@@ -64,7 +62,9 @@ fun TomItem(modifier: Modifier = Modifier) {
                 verticalAlignment = Alignment.CenterVertically,
                 horizontalArrangement = Arrangement.SpaceEvenly
             ) {
-                ProductPrice(modifier = Modifier.weight(1f), oldPrice = 5)
+                ProductPrice(modifier = Modifier
+                    .weight(1f)
+                    .padding(end = 8.dp), oldPrice = 5)
                 ButtonWithIcon()
             }
         }

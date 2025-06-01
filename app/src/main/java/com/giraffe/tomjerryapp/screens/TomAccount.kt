@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.defaultMinSize
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
@@ -42,7 +43,7 @@ import com.giraffe.tomjerryapp.ui.theme.yellow
 @Composable
 fun TomAccount(modifier: Modifier = Modifier) {
     Box(
-        modifier = modifier.fillMaxWidth()
+        modifier = modifier.fillMaxSize()
     ) {
         Image(
             modifier = Modifier.fillMaxWidth(),
@@ -50,7 +51,7 @@ fun TomAccount(modifier: Modifier = Modifier) {
             contentDescription = "background",
             contentScale = ContentScale.Crop
         )
-        Column {
+        Column (){
             Column(
                 modifier = Modifier.fillMaxWidth(),
                 verticalArrangement = Arrangement.Center,
@@ -62,7 +63,7 @@ fun TomAccount(modifier: Modifier = Modifier) {
                         .size(64.dp)
                         .clip(shape = RoundedCornerShape(12.dp)),
                     painter = painterResource(R.drawable.jackass),
-                    contentDescription = "background",
+                    contentDescription = "profile picture",
                     contentScale = ContentScale.Crop
                 )
                 Text(
@@ -89,7 +90,7 @@ fun TomAccount(modifier: Modifier = Modifier) {
             }
 
             Box(
-                modifier = Modifier.background(
+                modifier = Modifier.weight(1f).background(
                     Color.White,
                     shape = RoundedCornerShape(topStart = 20.dp, topEnd = 20.dp)
                 ),

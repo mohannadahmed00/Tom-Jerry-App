@@ -27,11 +27,12 @@ fun ProductPrice(
     price: Int = 3,
     oldPrice: Int? = null,
     unit: String = "cheeses",
-    backgroundColor: Color = Color.White
+    backgroundColor: Color = Color(0XFFE9F6FB)
 
 ) {
     Box(
-        modifier = modifier.background(backgroundColor, shape = RoundedCornerShape(8.dp))
+        modifier = modifier.background(backgroundColor, shape = RoundedCornerShape(8.dp)),
+        contentAlignment = Alignment.Center
     ) {
         Row(
             modifier = Modifier.padding(horizontal = 8.dp, vertical = 6.dp),
@@ -64,7 +65,7 @@ fun ProductPrice(
 
 @Preview
 @Composable
-fun ProductPricePreview(modifier: Modifier = Modifier) {
+fun ProductPricePreview() {
     TomJerryAppTheme {
         ProductPrice()
     }
