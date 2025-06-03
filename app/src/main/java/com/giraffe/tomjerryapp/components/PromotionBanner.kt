@@ -15,6 +15,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
@@ -26,7 +27,6 @@ import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.constraintlayout.compose.Dimension
 import com.giraffe.tomjerryapp.R
 import com.giraffe.tomjerryapp.ui.theme.TomJerryAppTheme
-import com.giraffe.tomjerryapp.ui.theme.blue
 
 @Composable
 fun PromotionBanner(modifier: Modifier = Modifier) {
@@ -35,12 +35,19 @@ fun PromotionBanner(modifier: Modifier = Modifier) {
             .height((92 + 16).dp)
             .fillMaxWidth()
     ) {
-        val (text, image, banner,circles) = createRefs()
+        val (text, image, banner, circles) = createRefs()
         Box(
             modifier = Modifier
                 .fillMaxWidth()
                 .height(92.dp)
-                .background(blue, shape = RoundedCornerShape(16.dp))
+                .background(
+                    brush = Brush.horizontalGradient(
+                        colors = listOf(
+                            Color(0XFF03446A),
+                            Color(0XFF0685D0),
+                        )
+                    ), shape = RoundedCornerShape(16.dp)
+                )
                 .constrainAs(banner) {
                     top.linkTo(parent.top)
                     bottom.linkTo(parent.bottom)
@@ -64,7 +71,7 @@ fun PromotionBanner(modifier: Modifier = Modifier) {
             Text(
                 "Adopt Tom! (Free Fail-Free Guarantee)",
                 style = MaterialTheme.typography.labelSmall.copy(
-                    color = Color.White,
+                    color = Color.White.copy(alpha = .8f),
                     fontWeight = FontWeight.W400
                 )
             )
@@ -77,7 +84,7 @@ fun PromotionBanner(modifier: Modifier = Modifier) {
                     end.linkTo(banner.end)
                     height = Dimension.fillToConstraints
                 }
-                .clip(RoundedCornerShape(topEnd = 16.dp,bottomEnd = 16.dp)),
+                .clip(RoundedCornerShape(topEnd = 16.dp, bottomEnd = 16.dp)),
             painter = painterResource(R.drawable.circles),
             contentDescription = "circles",
             contentScale = ContentScale.Crop
@@ -102,7 +109,7 @@ fun PromotionBanner(modifier: Modifier = Modifier) {
 
 @Preview(widthDp = 328)
 @Composable
-fun PromotionBannerPreview(modifier: Modifier = Modifier) {
+fun PromotionBannerPreview() {
     TomJerryAppTheme {
         PromotionBanner()
     }

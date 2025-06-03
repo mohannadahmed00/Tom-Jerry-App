@@ -24,8 +24,8 @@ import com.giraffe.tomjerryapp.ui.theme.TomJerryAppTheme
 @Composable
 fun ProductPrice(
     modifier: Modifier = Modifier,
-    price: Int = 3,
-    oldPrice: Int? = null,
+    price: Int = 5,
+    priceAfterDiscount: Int? = null,
     unit: String = "cheeses",
     backgroundColor: Color = Color(0XFFE9F6FB)
 
@@ -51,17 +51,18 @@ fun ProductPrice(
                 painter = painterResource(R.drawable.money_bag),
                 contentDescription = "money bag"
             )
-            oldPrice?.let {
+            priceAfterDiscount?.let {
                 Text(
                     modifier = Modifier.padding(end = 4.dp),
-                    text = oldPrice.toString(),
+                    text = price.toString(),
                     style = MaterialTheme.typography.labelSmall,
                     textDecoration = TextDecoration.LineThrough
                 )
             }
             Text(
                 modifier = Modifier.padding(end = 4.dp),
-                text = price.toString(), style = MaterialTheme.typography.labelSmall
+                text = (priceAfterDiscount ?: price).toString(),
+                style = MaterialTheme.typography.labelSmall
             )
             Text(unit, style = MaterialTheme.typography.labelSmall)
         }
