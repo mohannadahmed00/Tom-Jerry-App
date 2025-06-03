@@ -37,7 +37,8 @@ fun StateItem(
 
 ) {
     Box(
-        modifier = modifier.background(backgroundColor, shape = RoundedCornerShape(12.dp))
+        modifier = modifier.background(backgroundColor, shape = RoundedCornerShape(12.dp)),
+        contentAlignment = Alignment.Center
     ) {
         Row(
             modifier = Modifier.padding(top = 8.dp, bottom = 8.dp, start = 12.dp, end = 10.dp),

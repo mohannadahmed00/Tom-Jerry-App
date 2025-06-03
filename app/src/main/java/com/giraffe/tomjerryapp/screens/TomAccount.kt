@@ -6,12 +6,15 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
-import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.defaultMinSize
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.lazy.grid.GridCells
+import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
@@ -29,10 +32,12 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.giraffe.tomjerryapp.R
-import com.giraffe.tomjerryapp.components.LabeledOption
+import com.giraffe.tomjerryapp.components.SettingItem
 import com.giraffe.tomjerryapp.components.StateItem
 import com.giraffe.tomjerryapp.ui.theme.TomJerryAppTheme
+import com.giraffe.tomjerryapp.ui.theme.background
 import com.giraffe.tomjerryapp.ui.theme.black
+import com.giraffe.tomjerryapp.ui.theme.darkGray
 import com.giraffe.tomjerryapp.ui.theme.green
 import com.giraffe.tomjerryapp.ui.theme.lightGreen
 import com.giraffe.tomjerryapp.ui.theme.lightPink
@@ -51,7 +56,7 @@ fun TomAccount(modifier: Modifier = Modifier) {
             contentDescription = "background",
             contentScale = ContentScale.Crop
         )
-        Column (){
+        Column {
             Column(
                 modifier = Modifier.fillMaxWidth(),
                 verticalArrangement = Arrangement.Center,
@@ -90,68 +95,71 @@ fun TomAccount(modifier: Modifier = Modifier) {
             }
 
             Box(
-                modifier = Modifier.weight(1f).background(
-                    Color.White,
-                    shape = RoundedCornerShape(topStart = 20.dp, topEnd = 20.dp)
-                ),
+                modifier = Modifier
+                    .weight(1f)
+                    .background(
+                        background,
+                        shape = RoundedCornerShape(topStart = 20.dp, topEnd = 20.dp)
+                    ),
             ) {
                 Column(
-                    modifier = Modifier.padding(horizontal = 16.dp, vertical = 24.dp),
+                    modifier = Modifier
+                        .fillMaxHeight()
+                        .padding(
+                            start = 16.dp,
+                            end = 16.dp,
+                            top = 23.dp,
+                            bottom = 20.dp,
+                        ),
                     verticalArrangement = Arrangement.Top,
                 ) {
-                    Row(
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .padding(bottom = 8.dp)
+                    LazyVerticalGrid(
+                        columns = GridCells.Fixed(2),
+                        verticalArrangement = Arrangement.spacedBy(8.dp),
+                        horizontalArrangement = Arrangement.spacedBy(8.dp)
                     ) {
-                        StateItem(
-                            modifier = Modifier
-                                .weight(1f)
-                                .padding(end = 8.dp)
-                        )
-                        StateItem(
-                            modifier = Modifier.weight(1f),
-                            iconRes = R.drawable.chase,
-                            label = "Chase time",
-                            value = "+500 h",
-                            color = green,
-                            backgroundColor = lightGreen
-                        )
-                    }
-                    Row(
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .padding(bottom = 24.dp)
-                    ) {
-                        StateItem(
-                            modifier = Modifier
-                                .weight(1f)
-                                .padding(end = 8.dp),
-                            iconRes = R.drawable.sad_face,
-                            label = "Hunting times",
-                            value = "2M 12K",
-                            color = pink,
-                            backgroundColor = lightPink
-                        )
-                        StateItem(
-                            modifier = Modifier.weight(1f), iconRes = R.drawable.broken_heart,
-                            label = "Heartbroken",
-                            value = "3M 7K",
-                            color = yellow,
-                            backgroundColor = lightYellow
-                        )
+                        item {
+                            StateItem()
+                        }
+                        item {
+                            StateItem(
+                                iconRes = R.drawable.chase,
+                                label = "Chase time",
+                                value = "+500 h",
+                                color = green,
+                                backgroundColor = lightGreen
+                            )
+                        }
+                        item {
+                            StateItem(
+                                iconRes = R.drawable.sad_face,
+                                label = "Hunting times",
+                                value = "2M 12K",
+                                color = pink,
+                                backgroundColor = lightPink
+                            )
+                        }
+                        item {
+                            StateItem(
+                                iconRes = R.drawable.broken_heart,
+                                label = "Heartbroken",
+                                value = "3M 7K",
+                                color = yellow,
+                                backgroundColor = lightYellow
+                            )
+                        }
                     }
                     Text(
-                        modifier = Modifier.padding(bottom = 8.dp),
+                        modifier = Modifier.padding(top = 24.dp, bottom = 8.dp),
                         text = "Tom settings",
                         style = MaterialTheme.typography.titleMedium.copy(
                             fontWeight = FontWeight.W700,
-                            color = black.copy(alpha = .87f)
+                            color = darkGray.copy(alpha = .87f)
                         )
                     )
-                    LabeledOption()
-                    LabeledOption(iconRes = R.drawable.cat, label = "Meow settings")
-                    LabeledOption(
+                    SettingItem()
+                    SettingItem(iconRes = R.drawable.cat, label = "Meow settings")
+                    SettingItem(
                         iconRes = R.drawable.fridge,
                         label = "Password to open the fridge"
                     )
@@ -160,16 +168,15 @@ fun TomAccount(modifier: Modifier = Modifier) {
                         text = "His favorite foods",
                         style = MaterialTheme.typography.titleMedium.copy(
                             fontWeight = FontWeight.W700,
-                            color = black.copy(alpha = .87f)
+                            color = darkGray.copy(alpha = .87f)
                         )
                     )
-                    LabeledOption(iconRes = R.drawable.warning, label = "Mouses")
-                    LabeledOption(iconRes = R.drawable.burger, label = "Last stolen meal")
-                    LabeledOption(iconRes = R.drawable.sleep_face, label = "Change sleep mood")
+                    SettingItem(iconRes = R.drawable.warning, label = "Mouses")
+                    SettingItem(iconRes = R.drawable.burger, label = "Last stolen meal")
+                    SettingItem(iconRes = R.drawable.sleep_face, label = "Change sleep mood")
+                    Spacer(modifier = Modifier.weight(1f))
                     Text(
-                        modifier = Modifier
-                            .padding(top = 24.dp)
-                            .fillMaxWidth(),
+                        modifier = Modifier.fillMaxWidth(),
                         text = "v.TomBeta",
                         textAlign = TextAlign.Center,
                         style = MaterialTheme.typography.bodySmall.copy(color = black.copy(alpha = .6f))

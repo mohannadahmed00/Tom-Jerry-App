@@ -10,15 +10,16 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.giraffe.tomjerryapp.R
 import com.giraffe.tomjerryapp.ui.theme.TomJerryAppTheme
-import com.giraffe.tomjerryapp.ui.theme.black
+import com.giraffe.tomjerryapp.ui.theme.darkGray
 
 @Composable
-fun LabeledOption(
+fun SettingItem(
     modifier: Modifier = Modifier,
     iconRes: Int = R.drawable.bed,
     label: String = "Change sleeping place"
@@ -33,11 +34,12 @@ fun LabeledOption(
                     .padding(end = 17.25.dp)
                     .size(24.dp),
                 painter = painterResource(iconRes),
+                colorFilter = ColorFilter.tint(darkGray),
                 contentDescription = "icon"
             )
             Text(
                 label,
-                style = MaterialTheme.typography.labelMedium.copy(color = black.copy(.87f))
+                style = MaterialTheme.typography.labelMedium.copy(color = darkGray.copy(.87f))
             )
         }
     }
@@ -47,6 +49,6 @@ fun LabeledOption(
 @Composable
 fun LabeledOptionPreview() {
     TomJerryAppTheme {
-        LabeledOption()
+        SettingItem()
     }
 }
