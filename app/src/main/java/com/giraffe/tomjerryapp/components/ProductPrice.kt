@@ -35,7 +35,12 @@ fun ProductPrice(
         contentAlignment = Alignment.Center
     ) {
         Row(
-            modifier = Modifier.padding(horizontal = 8.dp, vertical = 6.dp),
+            modifier = Modifier.padding(
+                start = 11.5.dp,
+                end = 10.dp,
+                top = 7.83.dp,
+                bottom = 7.83.dp
+            ),
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.Center
         ) {
@@ -63,7 +68,7 @@ fun ProductPrice(
     }
 }
 
-@Preview
+@Preview(widthDp = 106, heightDp = 30)
 @Composable
 fun ProductPricePreview() {
     TomJerryAppTheme {

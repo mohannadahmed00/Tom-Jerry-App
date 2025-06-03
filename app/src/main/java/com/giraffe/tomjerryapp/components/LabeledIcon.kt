@@ -3,17 +3,16 @@ package com.giraffe.tomjerryapp.components
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.giraffe.tomjerryapp.R
-import com.giraffe.tomjerryapp.screens.TomKitchenScreen
 import com.giraffe.tomjerryapp.ui.theme.TomJerryAppTheme
 
 @Composable
@@ -28,7 +27,10 @@ fun LabeledIcon(
             painter = painterResource(iconRes),
             contentDescription = "icon"
         )
-        Text(label, style = MaterialTheme.typography.labelMedium)
+        Text(
+            label,
+            style = MaterialTheme.typography.labelMedium.copy(Color.White.copy(alpha = .87f))
+        )
     }
 }
 

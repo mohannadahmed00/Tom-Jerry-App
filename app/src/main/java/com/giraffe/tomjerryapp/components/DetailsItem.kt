@@ -4,7 +4,6 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -14,11 +13,12 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.giraffe.tomjerryapp.R
 import com.giraffe.tomjerryapp.ui.theme.TomJerryAppTheme
-import com.giraffe.tomjerryapp.ui.theme.gray
+import com.giraffe.tomjerryapp.ui.theme.black
 import com.giraffe.tomjerryapp.ui.theme.lightBlue
 
 @Composable
@@ -32,8 +32,11 @@ fun DetailsItem(
         modifier = modifier.background(lightBlue, shape = RoundedCornerShape(12.dp)),
     ) {
         Column(
-            modifier = Modifier.fillMaxWidth().padding(horizontal = 13.5.dp, vertical = 12.dp),
-            horizontalAlignment = Alignment.CenterHorizontally,) {
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(horizontal = 13.5.dp, vertical = 12.dp),
+            horizontalAlignment = Alignment.CenterHorizontally,
+        ) {
             Image(
                 painter = painterResource(iconRes),
                 contentDescription = "icon"
@@ -43,14 +46,19 @@ fun DetailsItem(
                 text = value,
                 style = MaterialTheme.typography.bodyMedium
             )
-            Text(text = label, style = MaterialTheme.typography.labelSmall.copy(color = gray))
+            Text(
+                text = label,
+                style = MaterialTheme.typography.labelSmall.copy(color = black.copy(alpha = .37f)),
+                maxLines = 1,
+                overflow = TextOverflow.Ellipsis
+            )
         }
     }
 }
 
-@Preview
+@Preview(widthDp = 90)
 @Composable
-fun DetailsItemPreview(modifier: Modifier = Modifier) {
+fun DetailsItemPreview() {
     TomJerryAppTheme {
         DetailsItem()
     }
