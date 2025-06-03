@@ -33,13 +33,14 @@ fun ButtonWithIcon(
     iconSize: Dp = 16.dp,
     borderColor: Color = blue,
     iconColor: Color = blue,
-    backgroundColor:Color = Color.Transparent
+    backgroundColor: Color = Color.Transparent
 ) {
-    val buttonPadding = if (numberOfNotifications != null) 7.dp else 0.dp
+    val topBtnPadding = if (numberOfNotifications != null) 4.dp else 0.dp
+    val endBtnPadding = if (numberOfNotifications != null) 1.dp else 0.dp
     Box(modifier = modifier) {
         Box(
             modifier = Modifier
-                .padding(buttonPadding)
+                .padding(top = topBtnPadding, end = endBtnPadding)
                 .size(buttonSize)
                 .background(backgroundColor, shape = RoundedCornerShape(roundedCornerSize))
                 .border(

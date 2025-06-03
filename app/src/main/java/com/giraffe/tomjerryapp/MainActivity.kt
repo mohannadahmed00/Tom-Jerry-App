@@ -26,10 +26,10 @@ class MainActivity : ComponentActivity() {
         setContent {
             TomJerryAppTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    JerryStoreScreen(modifier = Modifier.padding(innerPadding))
+                    //JerryStoreScreen(modifier = Modifier.padding(innerPadding))
                     //TomKitchenScreen(modifier = Modifier.padding(innerPadding))
                     //TomAccount(modifier = Modifier.padding(innerPadding))
-                    //SecretEpisodes(modifier = Modifier.padding(innerPadding))
+                    SecretEpisodes(modifier = Modifier.padding(innerPadding))
                 }
             }
         }

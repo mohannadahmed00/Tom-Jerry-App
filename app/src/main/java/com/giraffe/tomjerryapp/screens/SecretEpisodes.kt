@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -30,25 +31,28 @@ import androidx.compose.ui.unit.dp
 import com.giraffe.tomjerryapp.R
 import com.giraffe.tomjerryapp.components.CharacterItem
 import com.giraffe.tomjerryapp.components.EpisodeCard
+import com.giraffe.tomjerryapp.components.SectionHeader
 import com.giraffe.tomjerryapp.ui.theme.TomJerryAppTheme
-import com.giraffe.tomjerryapp.ui.theme.black
+import com.giraffe.tomjerryapp.ui.theme.darkGray
 
 @Composable
 fun SecretEpisodes(modifier: Modifier = Modifier) {
     Column(
-        modifier = modifier.background(
-            brush = Brush.verticalGradient(
-                colors = listOf(
-                    Color(0XFFA3DCFF),
-                    Color.White
+        modifier = modifier
+            .fillMaxSize()
+            .background(
+                brush = Brush.verticalGradient(
+                    colors = listOf(
+                        Color(0XFFA3DCFF),
+                        Color.White
+                    )
                 )
             )
-        )
     ) {
         Row(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(start = 16.dp, end = 16.dp, top = 16.dp),
+                .padding(start = 16.dp, end = 16.dp, top = 16.dp, bottom = 8.dp),
             horizontalArrangement = Arrangement.SpaceBetween,
             verticalAlignment = Alignment.CenterVertically
 
@@ -87,15 +91,21 @@ fun SecretEpisodes(modifier: Modifier = Modifier) {
             modifier = Modifier.padding(horizontal = 16.dp),
             verticalAlignment = Alignment.CenterVertically
         ) {
-            Column(modifier = Modifier.weight(1f)) {
+            Column(
+                modifier = Modifier
+                    .weight(1f)
+            ) {
                 Text(
                     modifier = Modifier.padding(bottom = 12.dp),
                     text = "Deleted episodes of Tom and Jerry!",
-                    style = MaterialTheme.typography.titleSmall.copy(color = black.copy(alpha = .87f))
+                    style = MaterialTheme.typography.titleSmall.copy(color = darkGray.copy(alpha = .87f))
                 )
                 Text(
                     text = "Scenes that were canceled for... mysterious (and sometimes embarrassing) reasons.",
-                    style = MaterialTheme.typography.bodyMedium.copy(fontWeight = FontWeight.W400)
+                    style = MaterialTheme.typography.bodyMedium.copy(
+                        color = darkGray.copy(alpha = .6f),
+                        fontWeight = FontWeight.W400
+                    )
                 )
             }
             Image(
@@ -104,49 +114,40 @@ fun SecretEpisodes(modifier: Modifier = Modifier) {
                     .height(178.dp),
                 painter = painterResource(R.drawable.tom_jerry),
                 contentDescription = "tom & jerry",
+                contentScale = ContentScale.Crop
             )
         }
-        Row(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(horizontal = 16.dp, vertical = 12.dp),
-            verticalAlignment = Alignment.CenterVertically,
-            horizontalArrangement = Arrangement.SpaceBetween
-        ) {
-            Text("Most watched", style = MaterialTheme.typography.titleMedium)
-            Row(
-                verticalAlignment = Alignment.CenterVertically
-            ) {
-                Text(
-                    modifier = Modifier.padding(end = 4.dp),
-                    text = "View all",
-                    style = MaterialTheme.typography.labelSmall
-                )
-                Image(
-                    painter = painterResource(R.drawable.right_arrow),
-                    contentDescription = "right arrow"
-                )
-            }
-        }
+        SectionHeader(
+            modifier = Modifier.padding(horizontal = 16.dp, vertical = 12.dp),
+            title = "Most watched"
+        )
         LazyRow(
+            modifier = Modifier.padding(bottom = 24.dp),
             contentPadding = PaddingValues(horizontal = 16.dp),
             horizontalArrangement = Arrangement.spacedBy(12.dp)
         ) {
             items(5) {
-                EpisodeCard()
+                EpisodeCard(
+                    coverRes = if (it % 2 == 0) R.drawable.tom_jerry_moon else R.drawable.episode_cover
+                )
             }
         }
         Text(
-            modifier = Modifier.padding(vertical = 12.dp, horizontal = 16.dp),
+            modifier = Modifier.padding(horizontal = 16.dp),
             text = "Popular character", style = MaterialTheme.typography.titleMedium
         )
 
         LazyRow(
-            contentPadding = PaddingValues(horizontal = 16.dp),
+            contentPadding = PaddingValues(vertical = 12.dp, horizontal = 16.dp),
             horizontalArrangement = Arrangement.spacedBy(8.dp)
         ) {
             items(5) {
-                CharacterItem()
+                CharacterItem(
+                    imageRes = if (it % 2 == 0) R.drawable.tom_face else R.drawable.jerry_face,
+                    name = if (it % 2 == 0) "Tom" else "Jerry",
+                    description = if (it % 2 == 0) "Failed stalker" else "A scammer mouse",
+                    backgroundColor = if (it % 2 == 0) Color(0XFFFCF2C5) else Color(0XFFFCC5E4),
+                )
             }
         }
     }
