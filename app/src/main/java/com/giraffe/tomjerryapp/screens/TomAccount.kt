@@ -119,7 +119,7 @@ fun TomAccount(modifier: Modifier = Modifier) {
                     }
                     item {
                         StateItem(
-                            iconRes = R.drawable.green_progress,
+                            iconRes = R.drawable.chase,
                             label = "Chase time",
                             value = "+500 h",
                             color = green,
@@ -128,7 +128,7 @@ fun TomAccount(modifier: Modifier = Modifier) {
                     }
                     item {
                         StateItem(
-                            iconRes = R.drawable.pink_progress,
+                            iconRes = R.drawable.sad_face,
                             label = "Hunting times",
                             value = "2M 12K",
                             color = pink,
@@ -137,7 +137,7 @@ fun TomAccount(modifier: Modifier = Modifier) {
                     }
                     item {
                         StateItem(
-                            iconRes = R.drawable.yellow_progress,
+                            iconRes = R.drawable.broken_heart,
                             label = "Heartbroken",
                             value = "3M 7K",
                             color = yellow,

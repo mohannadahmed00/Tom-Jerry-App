@@ -1,6 +1,5 @@
 package com.giraffe.tomjerryapp.components
 
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -14,7 +13,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.giraffe.tomjerryapp.R
@@ -28,7 +26,7 @@ import com.giraffe.tomjerryapp.ui.theme.semiBold16
 @Composable
 fun StateItem(
     modifier: Modifier = Modifier,
-    iconRes: Int = R.drawable.progress_icon,
+    iconRes: Int = R.drawable.evil,
     label: String = "No. of quarrels",
     value: String = "2M 12K",
     color: Color = blue,
@@ -43,13 +41,12 @@ fun StateItem(
             horizontalArrangement = Arrangement.Center,
             verticalAlignment = Alignment.CenterVertically
         ) {
-            Image(
-                modifier = Modifier
-                    .padding(end = 10.dp)
-                    .size(40.dp),
-                painter = painterResource(iconRes),
-                contentDescription = "icon",
-                //colorFilter = ColorFilter.tint(color)
+            StateProgress(
+                modifier = modifier.padding(end = 10.dp ).size(40.dp),
+                strokeWidth = 1.dp,
+                progress = .5f,
+                activeColor = color,
+                iconRes = iconRes
             )
             Column {
                 Text(
