@@ -14,8 +14,8 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -25,15 +25,20 @@ import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.giraffe.tomjerryapp.R
 import com.giraffe.tomjerryapp.components.CharacterItem
 import com.giraffe.tomjerryapp.components.EpisodeCard
 import com.giraffe.tomjerryapp.components.SectionHeader
 import com.giraffe.tomjerryapp.ui.theme.TomJerryAppTheme
+import com.giraffe.tomjerryapp.ui.theme.black
 import com.giraffe.tomjerryapp.ui.theme.darkGray
+import com.giraffe.tomjerryapp.ui.theme.regular14
+import com.giraffe.tomjerryapp.ui.theme.semiBold18
+import com.giraffe.tomjerryapp.ui.theme.semiBold20
+import com.giraffe.tomjerryapp.ui.theme.yellow
 
 @Composable
 fun SecretEpisodes(modifier: Modifier = Modifier) {
@@ -98,13 +103,18 @@ fun SecretEpisodes(modifier: Modifier = Modifier) {
                 Text(
                     modifier = Modifier.padding(bottom = 12.dp),
                     text = "Deleted episodes of Tom and Jerry!",
-                    style = MaterialTheme.typography.titleSmall.copy(color = darkGray.copy(alpha = .87f))
+                    style = semiBold18.copy(
+                        color = darkGray.copy(alpha = .87f),
+                        lineHeight = 20.sp,
+                        letterSpacing = .25.sp
+                    )
                 )
                 Text(
                     text = "Scenes that were canceled for... mysterious (and sometimes embarrassing) reasons.",
-                    style = MaterialTheme.typography.bodyMedium.copy(
+                    style = regular14.copy(
                         color = darkGray.copy(alpha = .6f),
-                        fontWeight = FontWeight.W400
+                        lineHeight = 20.sp,
+                        letterSpacing = .25.sp
                     )
                 )
             }
@@ -126,32 +136,69 @@ fun SecretEpisodes(modifier: Modifier = Modifier) {
             contentPadding = PaddingValues(horizontal = 16.dp),
             horizontalArrangement = Arrangement.spacedBy(12.dp)
         ) {
-            items(5) {
-                EpisodeCard(
-                    coverRes = if (it % 2 == 0) R.drawable.tom_jerry_moon else R.drawable.episode_cover
-                )
+            items(secretEpisodes) {
+                EpisodeCard(episode = it)
             }
         }
         Text(
             modifier = Modifier.padding(horizontal = 16.dp),
-            text = "Popular character", style = MaterialTheme.typography.titleMedium
+            text = "Popular character", style = semiBold20.copy(black.copy(alpha = .87f))
         )
 
         LazyRow(
             contentPadding = PaddingValues(vertical = 12.dp, horizontal = 16.dp),
             horizontalArrangement = Arrangement.spacedBy(8.dp)
         ) {
-            items(5) {
-                CharacterItem(
-                    imageRes = if (it % 2 == 0) R.drawable.tom_face else R.drawable.jerry_face,
-                    name = if (it % 2 == 0) "Tom" else "Jerry",
-                    description = if (it % 2 == 0) "Failed stalker" else "A scammer mouse",
-                    backgroundColor = if (it % 2 == 0) Color(0XFFFCF2C5) else Color(0XFFFCC5E4),
-                )
+            items(characters) {
+                CharacterItem(character = it)
             }
         }
     }
 }
+
+data class SecretEpisode(
+    val coverImgRes: Int = R.drawable.tom_jerry_moon,
+    val title: String = "Number 404 - The Cursed Cheese \uD83E\uDDC0",
+    val iconRes: Int = R.drawable.cheese,
+    val iconColor: Color = yellow,
+)
+
+val secretEpisodes = listOf(
+    SecretEpisode(),
+    SecretEpisode(
+        coverImgRes = R.drawable.episode_cover,
+        title = "Chase on the moon \uD83C\uDF15\n"
+    ),
+    SecretEpisode(),
+    SecretEpisode(
+        coverImgRes = R.drawable.episode_cover,
+        title = "Chase on the moon \uD83C\uDF15\n"
+    ),
+)
+
+data class Character(
+    val imgRes: Int = R.drawable.tom_face,
+    val name: String = "Tom",
+    val description: String = "Failed stalker",
+    val backgroundColor: Color = Color(0XFFFCF2C5)
+)
+
+val characters = listOf(
+    Character(),
+    Character(
+        imgRes = R.drawable.jerry_face,
+        name = "Jerry",
+        description = "A scammer mouse",
+        backgroundColor = Color(0XFFFCC5E4)
+    ),
+    Character(),
+    Character(
+        imgRes = R.drawable.jerry_face,
+        name = "Jerry",
+        description = "A scammer mouse",
+        backgroundColor = Color(0XFFFCC5E4)
+    ),
+)
 
 @Preview(widthDp = 360, heightDp = 800)
 @Composable
