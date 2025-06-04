@@ -1,91 +1,85 @@
 package com.giraffe.tomjerryapp.ui.theme
 
-import androidx.compose.material3.Typography
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.sp
+import com.giraffe.tomjerryapp.R
 
 // Set of Material typography styles to start with
-val Typography = Typography(
-    displaySmall = TextStyle(
-        fontFamily = FontFamily.Default,
-        color = Color.White,
-        fontSize = 10.sp,
-        textAlign = TextAlign.Center,
-        fontWeight = FontWeight.W500
-    ),
-    bodySmall = TextStyle(
-        fontFamily = FontFamily.Default,
-        color = gray,
-        fontSize = 12.sp,
-        textAlign = TextAlign.Center,
-        fontWeight = FontWeight.W400
-    ),
-    bodyMedium = TextStyle(
-        fontFamily = FontFamily.Default,
-        color = black.copy(alpha = 0.6f),
-        fontSize = 14.sp,
-        lineHeight = 20.sp,
-        letterSpacing = 0.5.sp,
-        fontWeight = FontWeight.W500
-    ),
-    bodyLarge = TextStyle(
-        fontFamily = FontFamily.Default,
-        fontWeight = FontWeight.Normal,
-        fontSize = 16.sp,
-        lineHeight = 24.sp,
-        letterSpacing = 0.5.sp
-    ),
+val IbmPlexSansArabicFamily = FontFamily(
+    Font(R.font.thin, FontWeight.Thin),
+    Font(R.font.light, FontWeight.Light),
+    Font(R.font.extra_light, FontWeight.ExtraLight),
+    Font(R.font.regular, FontWeight.Normal),
+    Font(R.font.medium, FontWeight.Medium),
+    Font(R.font.semi_bold, FontWeight.SemiBold),
+    Font(R.font.bold, FontWeight.Bold),
+)
+val medium10 = TextStyle(
+    fontFamily = FontFamily.Default,
+    fontSize = 10.sp,
+    fontWeight = FontWeight.Medium,
+)
+val medium12 = TextStyle(
+    fontFamily = FontFamily.Default,
+    fontSize = 12.sp,
+    fontWeight = FontWeight.Medium,
+)
+val medium14 = TextStyle(
+    fontFamily = FontFamily.Default,
+    fontSize = 14.sp,
+    fontWeight = FontWeight.Medium,
+)
+val medium16 = TextStyle(
+    fontFamily = FontFamily.Default,
+    fontSize = 16.sp,
+    fontWeight = FontWeight.Medium,
+)
+val medium18 = TextStyle(
+    fontFamily = FontFamily.Default,
+    fontSize = 18.sp,
+    fontWeight = FontWeight.Medium,
+)
+val medium20 = TextStyle(
+    fontFamily = FontFamily.Default,
+    fontSize = 20.sp,
+    fontWeight = FontWeight.Medium,
+)
 
-    labelSmall = TextStyle(
-        fontFamily = FontFamily.Default,
-        color = blue,
-        fontSize = 12.sp,
-        textAlign = TextAlign.Center,
-        fontWeight = FontWeight.W500
-    ),
-
-    labelMedium = TextStyle(
-        fontFamily = FontFamily.Default,
-        color = Color.White,
-        fontSize = 16.sp,
-        textAlign = TextAlign.Center,
-        fontWeight = FontWeight.W500
-    ),
-
-    titleSmall = TextStyle(
-        fontFamily = FontFamily.Default,
-        color = Color.White,
-        fontSize = 18.sp,
-        fontWeight = FontWeight.W600,
-        lineHeight = 16.sp,
-        letterSpacing = 0.5.sp
-    ),
-    titleMedium = TextStyle(
-        fontFamily = FontFamily.Default,
-        color = darkGray,
-        fontSize = 20.sp,
-        fontWeight = FontWeight.W500
-    ),
-
-
-    /* Other default text styles to override
-    titleLarge = TextStyle(
-        fontFamily = FontFamily.Default,
-        fontWeight = FontWeight.Normal,
-        fontSize = 22.sp,
-        lineHeight = 28.sp,
-        letterSpacing = 0.sp
-    ),
-    labelSmall = TextStyle(
-        fontFamily = FontFamily.Default,
-        fontWeight = FontWeight.Medium,
-        fontSize = 11.sp,
-        lineHeight = 16.sp,
-        letterSpacing = 0.5.sp
-    )
-    */
+val regular12 = TextStyle(
+    fontFamily = FontFamily.Default,
+    fontSize = 12.sp,
+    fontWeight = FontWeight.Normal,
+)
+val regular14 = TextStyle(
+    fontFamily = FontFamily.Default,
+    fontSize = 14.sp,
+    fontWeight = FontWeight.Normal,
+)
+val semiBold14 = TextStyle(
+    fontFamily = FontFamily.Default,
+    fontSize = 14.sp,
+    fontWeight = FontWeight.SemiBold,
+)
+val semiBold16 = TextStyle(
+    fontFamily = FontFamily.Default,
+    fontSize = 16.sp,
+    fontWeight = FontWeight.SemiBold,
+)
+val semiBold18 = TextStyle(
+    fontFamily = FontFamily.Default,
+    fontSize = 18.sp,
+    fontWeight = FontWeight.SemiBold,
+)
+val semiBold20 = TextStyle(
+    fontFamily = FontFamily.Default,
+    fontSize = 20.sp,
+    fontWeight = FontWeight.SemiBold,
+)
+val bold20 = TextStyle(
+    fontFamily = FontFamily.Default,
+    fontSize = 20.sp,
+    fontWeight = FontWeight.Bold,
 )
