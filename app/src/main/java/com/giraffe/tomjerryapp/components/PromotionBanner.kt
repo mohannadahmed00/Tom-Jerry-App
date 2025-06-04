@@ -4,13 +4,11 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -19,7 +17,6 @@ import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.constraintlayout.compose.ChainStyle
@@ -27,6 +24,9 @@ import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.constraintlayout.compose.Dimension
 import com.giraffe.tomjerryapp.R
 import com.giraffe.tomjerryapp.ui.theme.TomJerryAppTheme
+import com.giraffe.tomjerryapp.ui.theme.regular12
+import com.giraffe.tomjerryapp.ui.theme.semiBold16
+import com.giraffe.tomjerryapp.ui.theme.white
 
 @Composable
 fun PromotionBanner(modifier: Modifier = Modifier) {
@@ -66,14 +66,11 @@ fun PromotionBanner(modifier: Modifier = Modifier) {
                     end.linkTo(image.start)
                 }
         ) {
-            Text("Buy 1 Tom and get 2 for free", style = MaterialTheme.typography.labelMedium)
-            Spacer(modifier = Modifier.height(8.dp))
+            Text("Buy 1 Tom and get 2 for free", style = semiBold16.copy(color = white))
             Text(
-                "Adopt Tom! (Free Fail-Free Guarantee)",
-                style = MaterialTheme.typography.labelSmall.copy(
-                    color = Color.White.copy(alpha = .8f),
-                    fontWeight = FontWeight.W400
-                )
+                modifier = Modifier.padding(top = 8.dp),
+                text = "Adopt Tom! (Free Fail-Free Guarantee)",
+                style = regular12.copy(color = white.copy(alpha = .8f))
             )
         }
         Image(
@@ -98,11 +95,10 @@ fun PromotionBanner(modifier: Modifier = Modifier) {
                     start.linkTo(text.end)
                 }
                 .clip(RoundedCornerShape(bottomEnd = 16.dp)),
-            painter = painterResource(R.drawable.tom_with_money),
+            painter = painterResource(R.drawable.croped_tom),
             contentDescription = "tom with money",
             contentScale = ContentScale.Crop
         )
-
         createHorizontalChain(text, image, chainStyle = ChainStyle.SpreadInside)
     }
 }

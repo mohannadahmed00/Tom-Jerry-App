@@ -8,7 +8,6 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -18,8 +17,11 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.giraffe.tomjerryapp.R
 import com.giraffe.tomjerryapp.ui.theme.TomJerryAppTheme
+import com.giraffe.tomjerryapp.ui.theme.blue
+import com.giraffe.tomjerryapp.ui.theme.medium12
 
 @Composable
 fun ProductPrice(
@@ -55,16 +57,22 @@ fun ProductPrice(
                 Text(
                     modifier = Modifier.padding(end = 4.dp),
                     text = price.toString(),
-                    style = MaterialTheme.typography.labelSmall,
+                    style = medium12.copy(color = blue),
                     textDecoration = TextDecoration.LineThrough
                 )
             }
             Text(
                 modifier = Modifier.padding(end = 4.dp),
                 text = (priceAfterDiscount ?: price).toString(),
-                style = MaterialTheme.typography.labelSmall
+                style = medium12.copy(color = blue)
             )
-            Text(unit, style = MaterialTheme.typography.labelSmall)
+            Text(
+                text = unit,
+                style = medium12.copy(
+                    color = blue,
+                    lineHeight = 15.sp,
+                )
+            )
         }
     }
 }

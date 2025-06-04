@@ -26,6 +26,7 @@ import com.giraffe.tomjerryapp.ui.theme.TomJerryAppTheme
 import com.giraffe.tomjerryapp.ui.theme.blue
 import com.giraffe.tomjerryapp.ui.theme.darkGray
 import com.giraffe.tomjerryapp.ui.theme.gray
+import com.giraffe.tomjerryapp.ui.theme.regular14
 
 @Composable
 fun SearchBar(modifier: Modifier = Modifier) {
@@ -67,10 +68,7 @@ fun SearchBar(modifier: Modifier = Modifier) {
                 placeholder = {
                     Text(
                         "Search about tom ...",
-                        style = MaterialTheme.typography.bodyMedium.copy(
-                            color = gray,
-                            fontWeight = FontWeight.W400
-                        )
+                        style = regular14.copy(color = gray)
                     )
                 }
             )

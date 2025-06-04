@@ -7,7 +7,6 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -19,9 +18,10 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.giraffe.tomjerryapp.R
 import com.giraffe.tomjerryapp.ui.theme.TomJerryAppTheme
-import com.giraffe.tomjerryapp.ui.theme.black
 import com.giraffe.tomjerryapp.ui.theme.darkGray
 import com.giraffe.tomjerryapp.ui.theme.lightGray
+import com.giraffe.tomjerryapp.ui.theme.medium14
+import com.giraffe.tomjerryapp.ui.theme.regular12
 
 @Composable
 fun AppBar(modifier: Modifier = Modifier) {
@@ -41,11 +41,11 @@ fun AppBar(modifier: Modifier = Modifier) {
         Column(modifier = Modifier.weight(1f)) {
             Text(
                 text = "Hi, Jerry \uD83D\uDC4B\uD83C\uDFFB",
-                style = MaterialTheme.typography.bodyMedium.copy(color = black)
+                style = medium14.copy(color = darkGray)
             )
             Text(
                 "Which Tom do you want to buy?",
-                style = MaterialTheme.typography.bodySmall.copy(color = lightGray)
+                style = regular12.copy(color = lightGray)
             )
         }
         ButtonWithIcon(

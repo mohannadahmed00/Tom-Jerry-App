@@ -8,7 +8,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -22,6 +21,8 @@ import androidx.compose.ui.unit.dp
 import com.giraffe.tomjerryapp.R
 import com.giraffe.tomjerryapp.ui.theme.TomJerryAppTheme
 import com.giraffe.tomjerryapp.ui.theme.blue
+import com.giraffe.tomjerryapp.ui.theme.medium10
+import com.giraffe.tomjerryapp.ui.theme.white
 
 @Composable
 fun ButtonWithIcon(
@@ -70,11 +71,10 @@ fun ButtonWithIcon(
             ) {
                 Text(
                     text = numberOfNotifications.toString(),
-                    style = MaterialTheme.typography.displaySmall
+                    style = medium10.copy(color = white)
                 )
             }
         }
-
     }
 }
 

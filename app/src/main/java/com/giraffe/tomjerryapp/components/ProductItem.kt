@@ -11,28 +11,29 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.giraffe.tomjerryapp.R
+import com.giraffe.tomjerryapp.screens.Product
 import com.giraffe.tomjerryapp.ui.theme.TomJerryAppTheme
 import com.giraffe.tomjerryapp.ui.theme.darkGray
+import com.giraffe.tomjerryapp.ui.theme.gray
+import com.giraffe.tomjerryapp.ui.theme.regular12
+import com.giraffe.tomjerryapp.ui.theme.semiBold18
 
 @Composable
 fun ProductItem(
     modifier: Modifier = Modifier,
-    imgRes: Int = R.drawable.tom,
-    name: String = "Frozen Tom",
-    details: String = "He was chasing Jerry, he froze after the first look",
-    price: Int = 5,
-    priceAfterDiscount: Int = 3,
+    product: Product = Product(imgRes = R.drawable.sleeping_tom)
 ) {
     Box(modifier = modifier.height((219 + 16).dp), contentAlignment = Alignment.TopCenter) {
         Column(
@@ -45,18 +46,19 @@ fun ProductItem(
         ) {
             Text(
                 modifier = Modifier.padding(top = 92.dp, start = 8.dp, end = 8.dp),
-                text = name,
+                text = product.name,
                 maxLines = 1,
                 overflow = TextOverflow.Ellipsis,
-                style = MaterialTheme.typography.titleSmall.copy(color = darkGray)
+                style = semiBold18.copy(color = darkGray)
             )
             Text(
                 modifier = Modifier
                     .weight(1f)
                     .padding(horizontal = 8.dp),
-                text = details,
-                style = MaterialTheme.typography.bodySmall,
+                text = product.details,
+                style = regular12.copy(color = gray),
                 maxLines = 3,
+                textAlign = TextAlign.Center,
                 overflow = TextOverflow.Ellipsis,
             )
             Row(
@@ -69,15 +71,16 @@ fun ProductItem(
                         .height(30.dp)
                         .weight(1f)
                         .padding(end = 8.dp),
-                    price = price,
-                    priceAfterDiscount = priceAfterDiscount
+                    price = product.price,
+                    priceAfterDiscount = product.priceAfterDiscount
                 )
                 ButtonWithIcon()
             }
         }
         Image(
             modifier = Modifier.height(100.dp),
-            painter = painterResource(imgRes),
+            painter = painterResource(product.imgRes),
+            contentScale = ContentScale.Crop,
             contentDescription = "product image"
         )
     }
