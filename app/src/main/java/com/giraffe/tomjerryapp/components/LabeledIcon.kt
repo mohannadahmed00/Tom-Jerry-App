@@ -14,6 +14,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.giraffe.tomjerryapp.R
 import com.giraffe.tomjerryapp.ui.theme.TomJerryAppTheme
+import com.giraffe.tomjerryapp.ui.theme.medium16
+import com.giraffe.tomjerryapp.ui.theme.white
 
 @Composable
 fun LabeledIcon(
@@ -28,8 +30,8 @@ fun LabeledIcon(
             contentDescription = "icon"
         )
         Text(
-            label,
-            style = MaterialTheme.typography.labelMedium.copy(Color.White.copy(alpha = .87f))
+            text = label,
+            style = medium16.copy(white.copy(alpha = .87f))
         )
     }
 }

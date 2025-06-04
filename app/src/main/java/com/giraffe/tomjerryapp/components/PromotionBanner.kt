@@ -95,7 +95,7 @@ fun PromotionBanner(modifier: Modifier = Modifier) {
                     start.linkTo(text.end)
                 }
                 .clip(RoundedCornerShape(bottomEnd = 16.dp)),
-            painter = painterResource(R.drawable.croped_tom),
+            painter = painterResource(R.drawable.cropped_tom),
             contentDescription = "tom with money",
             contentScale = ContentScale.Crop
         )

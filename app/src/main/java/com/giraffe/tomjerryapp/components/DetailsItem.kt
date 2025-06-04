@@ -6,8 +6,8 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -20,6 +20,8 @@ import com.giraffe.tomjerryapp.R
 import com.giraffe.tomjerryapp.ui.theme.TomJerryAppTheme
 import com.giraffe.tomjerryapp.ui.theme.black
 import com.giraffe.tomjerryapp.ui.theme.lightBlue
+import com.giraffe.tomjerryapp.ui.theme.medium12
+import com.giraffe.tomjerryapp.ui.theme.medium14
 
 @Composable
 fun DetailsItem(
@@ -38,17 +40,18 @@ fun DetailsItem(
             horizontalAlignment = Alignment.CenterHorizontally,
         ) {
             Image(
+                modifier = Modifier.size(32.dp),
                 painter = painterResource(iconRes),
                 contentDescription = "icon"
             )
             Text(
-                modifier = Modifier.padding(top = 12.dp, bottom = 4.dp),
+                modifier = Modifier.padding(top = 12.dp, bottom = 2.dp),
                 text = value,
-                style = MaterialTheme.typography.bodyMedium
+                style = medium14.copy(color = black.copy(alpha = .6f))
             )
             Text(
                 text = label,
-                style = MaterialTheme.typography.labelSmall.copy(color = black.copy(alpha = .37f)),
+                style = medium12.copy(color = black.copy(alpha = .37f)),
                 maxLines = 1,
                 overflow = TextOverflow.Ellipsis
             )
